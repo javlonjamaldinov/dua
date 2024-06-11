@@ -7,25 +7,28 @@ class DuaContainer extends StatelessWidget {
   final VoidCallback onTap;
 
   const DuaContainer({
-    super.key,
+    Key? key,
     required this.text,
     required this.textColor,
     required this.onTap,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final Size screenSize = MediaQuery.of(context).size;
+    final double containerWidth = screenSize.width * 0.4;
+    final double containerHeight = screenSize.width * 0.15;
+
     return GestureDetector(
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.only(
-          left: 10,
-          right: 10,
-        ),
+        padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Material(
           elevation: 1,
           borderRadius: BorderRadius.circular(12),
           child: Container(
+            width: containerWidth,
+            height: containerHeight,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
               color: ContentColors.white,
